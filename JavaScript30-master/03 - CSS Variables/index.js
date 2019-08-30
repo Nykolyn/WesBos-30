@@ -1,18 +1,26 @@
 const inputs = document.querySelectorAll(".controls input");
 const handleUpdate = function() {
-  const img = document.querySelector("img");
   console.log(this.name);
-  if (this.name === "blur") {
-    img.style.filter = `blur(${this.value}px)`;
-  }
+  const suffix = this.dataset.sizing || "";
 
-  if (this.name === "spacing") {
-    img.style.padding = `${this.value}px`;
-  }
+  document.documentElement.style.setProperty(
+    `--${this.name}`,
+    this.value + suffix
+  );
 
-  if (this.type === "color") {
-    img.style.backgroundColor = `${this.value}`;
-  }
+  //   my version
+  // const img = document.querySelector("img");
+  //   if (this.name === "blur") {
+  //     img.style.filter = `blur(${this.value}px)`;
+  //   }
+
+  //   if (this.name === "spacing") {
+  //     img.style.padding = `${this.value}px`;
+  //   }
+
+  //   if (this.type === "color") {
+  //     img.style.backgroundColor = `${this.value}`;
+  //   }
 };
 
 inputs.forEach(input => input.addEventListener("input", handleUpdate));
